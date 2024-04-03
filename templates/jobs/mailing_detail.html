@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="col-12">
+    <div class="row">
+        <div class="col-6">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Рассылка {{ object.title | title }} ({{ object.slug }})</h3>
+            </div>
+            <div class="card-body">
+
+                    <ul>
+                        {% for value in object.recipients.all.values_list %}
+                            <li>{{value.2 }}</li>
+                        {% endfor%}
+                    </ul>
+
+                <p>Текст рассылки: {{ object.message }}</p>
+                <p>Начало рассылки: {{ object.start_time }}</p>
+                <p>Окончание рассылки: {{ object.stop_time }}</p>
+                <p>Следующая отправка: {{ object.next_sending }}</p>
+                <p>Периодичность: {{ object.frequency }}</p>
+
+            </div>
+            <div class="card-footer">
+                <p>Статус рассылки: {{ object.status }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+[
+  {
+    "model": "clients.client",
+    "pk": 1,
+    "fields": {
+      "name": "иванов иван иванович",
+      "email": "example_1@mailing.co",
+      "comment": "получатель рассылки"
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 2,
+    "fields": {
+      "name": "петров петр петрович",
+      "email": "Example_3@mailing.Co",
+      "comment": "получатель всех рассылок"
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 3,
+    "fields": {
+      "name": "семенов петр иванович",
+      "email": "Example_2@mailing.Co",
+      "comment": "Получатель одной из рассылок"
+    }
+  }
+]

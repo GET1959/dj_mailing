@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-12">
+    <div class="card">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Попытка</th>
+                    <th scope="col">Название рассылки</th>
+                    <th scope="col">Время попытки</th>
+                    <th scope="col">Результат попытки</th>
+                    <th scope="col">Ответ сервера</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+                <tr>
+                    <td>{{object.name|slice:50}}</td>
+                    <td>{{object.attempt_mailing|slice:50}}</td>
+                    <td>{{object.attempt_time|slice:50}}</td>
+                    <td>{{object.attempt_result|slice:50}}</td>
+                    <td>{{object.server_response|slice:100}}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{% endblock %}

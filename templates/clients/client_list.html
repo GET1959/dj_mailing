@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <div class="col-12 mb-5">
+    <a class="btn btn-outline-primary" href="{% url 'clients:create' %}">Добавить клиента</a>
+  </div>
+
+
+  {% for object in object_list %}
+
+      <div class="col-4">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <p class="card-text">
+
+                {{ object | title }}
+
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+
+                <a href="{% url 'clients:view' object.pk %}" type="button"
+                class="btn btn-sm btn-outline-secondary">View</a>
+                <a href="{% url 'clients:edit' object.pk %}" type="button"
+                class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{% url 'clients:delete' object.pk %}" type="button"
+                class="btn btn-sm btn-outline-danger">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  {% endfor %}
+
+{% endblock %}

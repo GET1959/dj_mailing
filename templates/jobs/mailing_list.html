@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-12 mb-5">
+    <a class="btn btn-outline-primary" href="{% url 'jobs:create' %}">Добавить рассылку</a>
+</div>
+
+<div class="col-12">
+    <div class="card">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Название рассылки</th>
+                    <th scope="col">Email получателей</th>
+                    <th scope="col">Сообщение рассылки</th>
+                    <th scope="col">Статус рассылки</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+                <tr>
+                    <td>{{object.message.title|slice:50}}</td>
+                    <td>
+                        <ul>
+                            {% for value in object.recipients.all.values_list %}
+                            <li>{{value.2 }}</li>
+                            {% endfor%}
+                        </ul>
+                    </td>
+                    <td>{{object.message.content|slice:200}}</td>
+                    <td>{{object.status|slice:50}}</td>
+
+                    <td><a href="{% url 'jobs:view' object.pk%}" class="btn btn-outline-primary">detail view</a></td>
+                    <td><a href="{% url 'jobs:edit' object.pk%}" class="btn btn-outline-warning">edit</a></td>
+                    <td><a href="{% url 'jobs:delete' object.pk%}" class="btn btn-outline-danger">delete</a></td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{% endblock %}
