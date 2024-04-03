@@ -1,7 +1,6 @@
 import logging
 import smtplib
 from datetime import datetime, timedelta
-from translatepy import Translator
 
 import pytz
 from django.conf import settings
@@ -53,7 +52,6 @@ def my_job():
     current_datetime = datetime.now(zone)
     mailings = Mailing.objects.all().filter(next_sending__lte=current_datetime).filter(status__in=['created', 'active'])
     for mailing in mailings:
-        # trigger = CronTrigger(start_date=mailing.start_time, end_date=mailing.stop_time, second="*/10")
         try:
             send_mail(
                 subject=mailing.message.title,
@@ -62,10 +60,22 @@ def my_job():
                 recipient_list=[client.email for client in mailing.recipients.all()],
                 fail_silently=False,
             )
-            Attempt.objects.create(name='email_sending', attempt_mailing=mailing, attempt_time=current_datetime, attempt_result='успешно', server_response='OK')
+            Attempt.objects.create(
+                name='email_sending',
+                attempt_mailing=mailing,
+                attempt_time=current_datetime,
+                attempt_result='успешно',
+                server_response='OK'
+            )
             logger.info(f"email {mailing.title} sent OK")
         except smtplib.SMTPException as e:
-            Attempt.objects.create(name='email_sending', attempt_mailing=mailing, attempt_time=current_datetime, attempt_result='не отправлено', server_response=e)
+            Attempt.objects.create(
+                name='email_sending',
+                attempt_mailing=mailing,
+                attempt_time=current_datetime,
+                attempt_result='не отправлено',
+                server_response=e
+            )
             logger.error(e)
 
         if mailing.frequency == 'день' and (mailing.stop_time - current_datetime).days < 1:
@@ -81,13 +91,7 @@ def my_job():
             mailing.status = "active"
             mailing.next_sending = get_next_date(mailing.frequency)
             mailing.save()
-    # Your job processing logic here...
-    # print('HEY!')
 
-
-# def your_job():
-#     # Your job processing logic here...
-#     print('HOY!')
 
 # The `close_old_connections` decorator ensures that database connections, that have become
 # unusable or are obsolete, are closed before and after your job has run. You should use it
@@ -122,15 +126,6 @@ class Command(BaseCommand):
             replace_existing=True,
         )
         logger.info("Added job 'my_job'.")
-
-        # scheduler.add_job(
-        #     your_job,
-        #     trigger=CronTrigger(start_date='2024-03-30 12:40:31', end_date='2024-03-30 12:41:31', second="*/20"),  # Every 20 seconds
-        #     id="your_job",  # The `id` assigned to each job MUST be unique
-        #     max_instances=1,
-        #     replace_existing=True,
-        # )
-        # logger.info("Added job 'your_job'.")
 
         scheduler.add_job(
             delete_old_job_executions,
