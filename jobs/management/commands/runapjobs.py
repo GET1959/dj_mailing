@@ -30,7 +30,7 @@ logger.addHandler(fh)
 def get_next_date(period: str):
     zone = pytz.timezone(settings.TIME_ZONE)
     current_datetime = datetime.now(zone)
-    if period == 'секунда':
+    if period == '10 секунд':
         next_date = current_datetime + timedelta(seconds=10)
         return next_date
     elif period == 'минута':
@@ -77,8 +77,13 @@ def my_job():
                 server_response=e
             )
             logger.error(e)
-
-        if mailing.frequency == 'день' and (mailing.stop_time - current_datetime).days < 1:
+        if mailing.frequency == '10 секунд' and (mailing.stop_time - current_datetime).seconds < 10:
+            mailing.status = "completed"
+            mailing.save()
+        elif mailing.frequency == 'минута' and (mailing.stop_time - current_datetime).seconds < 60:
+            mailing.status = "completed"
+            mailing.save()
+        elif mailing.frequency == 'день' and (mailing.stop_time - current_datetime).days < 1:
             mailing.status = "completed"
             mailing.save()
         elif mailing.frequency == 'неделя' and (mailing.stop_time - current_datetime).days < 7:
