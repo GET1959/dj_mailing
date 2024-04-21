@@ -5,4 +5,4 @@ from mess.models import Message
 
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('title', 'content')
+    list_display = ("title", "content")

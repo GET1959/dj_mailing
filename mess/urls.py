@@ -6,9 +6,9 @@ from mess.views import MessageCreateView, MessageListView, MessageDetailView, Me
 app_name = MessConfig.name
 
 urlpatterns = [
-    path('create/', MessageCreateView.as_view(), name='create'),
-    path('', MessageListView.as_view(), name='list'),
-    path('view/<int:pk>/', MessageDetailView.as_view(), name='view'),
-    path('edit/<int:pk>/', MessageUpdateView.as_view(), name='edit'),
-    path('delete/<int:pk>/', MessageDeleteView.as_view(), name='delete'),
+    path("create/", MessageCreateView.as_view(), name="create"),
+    path("", MessageListView.as_view(), name="list"),
+    path("view/<int:pk>/", MessageDetailView.as_view(), name="view"),
+    path("edit/<int:pk>/", MessageUpdateView.as_view(), name="edit"),
+    path("delete/<int:pk>/", MessageDeleteView.as_view(), name="delete"),
 ]

@@ -16,6 +16,6 @@ from config import settings
 #     scheduler.add_job(myfunc, 'interval', seconds=1)
 #     scheduler.start()
 
-with open('../mailing.log') as f:
+with open("../mailing.log") as f:
     for line in f:
-        print(line.strip().split(' - '))
+        print(line.strip().split(" - "))
