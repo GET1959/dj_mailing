@@ -1,0 +1,34 @@
+[
+  {
+    "model": "mess.message",
+    "pk": 1,
+    "fields": {
+      "title": "объявление",
+      "content": "Совещание назначено на 15:00"
+    }
+  },
+  {
+    "model": "mess.message",
+    "pk": 2,
+    "fields": {
+      "title": "уведомление",
+      "content": "Уведомление об изменении расписания"
+    }
+  },
+  {
+    "model": "mess.message",
+    "pk": 3,
+    "fields": {
+      "title": "тест 10 сек",
+      "content": "Тестовое десятисекундное сообщение"
+    }
+  },
+  {
+    "model": "mess.message",
+    "pk": 4,
+    "fields": {
+      "title": "тест 1 мин",
+      "content": "Тестовое ежеминутное сообщение"
+    }
+  }
+]
