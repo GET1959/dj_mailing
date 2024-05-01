@@ -13,4 +13,5 @@ class MailingAdmin(admin.ModelAdmin):
         "stop_time",
         "next_sending",
         "frequency",
+        "is_active"
     )

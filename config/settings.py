@@ -142,6 +142,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = "gena.sky@mail.ru"
+EMAIL_HOST_PASSWORD = "EABdfwtFchrAcSQRnRLL"
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
 """
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
@@ -150,13 +159,14 @@ EMAIL_HOST_PASSWORD = get_mail_pw()
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 """
+"""
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "noreply@oscarbot.ru"
 EMAIL_HOST_PASSWORD = "AsTSNVv7pun9"
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-
+"""
 EMAIL_SERVER = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = ["notedeveloper@bk.ru"]

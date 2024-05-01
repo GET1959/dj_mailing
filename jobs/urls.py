@@ -7,7 +7,7 @@ from jobs.views import (
     MailingDetailView,
     MailingUpdateView,
     MailingDeleteView,
-    AttemptListView,
+    AttemptListView, activity_trigger,
 )
 
 app_name = JobsConfig.name
@@ -18,5 +18,6 @@ urlpatterns = [
     path("view/<int:pk>/", MailingDetailView.as_view(), name="view"),
     path("edit/<int:pk>/", MailingUpdateView.as_view(), name="edit"),
     path("delete/<int:pk>/", MailingDeleteView.as_view(), name="delete"),
+    path('activity/<int:pk>/', activity_trigger, name='activity_trigger'),
     path("attempts", AttemptListView.as_view(), name="attempt_list"),
 ]

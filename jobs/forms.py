@@ -23,4 +23,12 @@ class MailingForm(StyleFormMixin, forms.ModelForm):
             "next_sending",
             "frequency",
             "status",
+            "owner"
         )
+
+
+class MailingManagerForm(StyleFormMixin, forms.ModelForm):
+
+    class Meta:
+        model = Mailing
+        fields = ("is_active",)
