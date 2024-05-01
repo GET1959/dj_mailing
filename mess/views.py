@@ -17,6 +17,11 @@ class MessageListView(ListView):
     model = Message
     extra_context = {"title": "Сообщения"}
 
+    def get_queryset(self, **kwargs):
+        if self.request.user.is_superuser or self.request.user.is_staff:
+            return Message.objects.all()
+        return Message.objects.filter(owner=self.request.user)
+
 
 class MessageDetailView(DetailView):
     model = Message
@@ -28,6 +33,12 @@ class MessageUpdateView(UpdateView):
     form_class = MessageForm
     extra_context = {"title": "Редактирование сообщения"}
     success_url = reverse_lazy("mess:list")
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.owner = self.request.user
+        self.object.save()
+        return super().form_valid(form)
 
 
 class MessageDeleteView(DeleteView):

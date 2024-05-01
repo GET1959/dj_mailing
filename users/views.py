@@ -2,6 +2,7 @@ import random
 
 from django.conf import settings
 from django.contrib.auth import login
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import (
     PasswordResetView,
@@ -11,11 +12,11 @@ from django.contrib.auth.views import (
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.sites.models import Site
 from django.core.mail import send_mail
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.views.generic import CreateView, UpdateView, TemplateView, View
+from django.views.generic import CreateView, UpdateView, TemplateView, View, ListView
 
 from users.forms import (
     UserRegisterForm,
@@ -49,7 +50,7 @@ class RegisterView(CreateView):
             subject="Подтвердите свой электронный адрес",
             message=f"""Пожалуйста, перейдите по следующей ссылке, чтобы подтвердить свой
             адрес электронной почты: http://{CURRENT_SITE}{activation_url}""",
-            from_email="noreply@oscarbot.ru",
+            from_email=settings.EMAIL_HOST_USER,
             recipient_list=[user.email],
             fail_silently=False,
         )
@@ -213,3 +214,23 @@ class AuthorizationRequest(SuccessMessageMixin, LoginView):
         context = super().get_context_data(**kwargs)
         context["title"] = "Для посещения этой страницы необходимо авторизоваться"
         return context
+
+
+class UserListView(PermissionRequiredMixin, ListView):
+    model = User
+    extra_context = {"title": "Пользователи"}
+    permission_required = ["users.view_user", "users.set_activity"]
+
+    def has_permission(self):
+        is_manager = self.request.user.groups.filter(name='manager').exists()
+        return is_manager
+
+
+def activity_trigger(request, pk):
+    user_item = get_object_or_404(User, pk=pk)
+    if user_item.is_active:
+        user_item.is_active = False
+    else:
+        user_item.is_active = True
+    user_item.save()
+    return redirect('users:user_list')

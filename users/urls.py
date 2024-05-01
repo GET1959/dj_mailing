@@ -15,7 +15,7 @@ from users.views import (
     AuthorizationRequest,
     PasswordRequestSent,
     PasswordChanged,
-    PasswordGeneratedSent,
+    PasswordGeneratedSent, activity_trigger, UserListView,
 )
 
 app_name = UsersConfig.name
@@ -36,4 +36,6 @@ urlpatterns = [
     path("auth_request/", AuthorizationRequest.as_view(), name="auth_request"),
     path("pw_request_sent/", PasswordRequestSent.as_view(), name="pw_request_sent"),
     path("pw_changed/", PasswordChanged.as_view(), name="pw_changed"),
+    path('user_list/', UserListView.as_view(), name='user_list'),
+    path('activity/<int:pk>/', activity_trigger, name='activity_trigger'),
 ]

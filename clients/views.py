@@ -17,6 +17,11 @@ class ClientListView(ListView):
     model = Client
     extra_context = {"title": "Клиенты"}
 
+    def get_queryset(self, **kwargs):
+        if self.request.user.is_superuser or self.request.user.is_staff:
+            return Client.objects.all()
+        return Client.objects.filter(owner=self.request.user)
+
 
 class ClientDetailView(DetailView):
     model = Client
