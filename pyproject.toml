@@ -12,6 +12,8 @@ psycopg2-binary = "^2.9.9"
 django-apscheduler = "^0.6.2"
 translatepy = "^2.3"
 pillow = "^10.3.0"
+pytils = "^0.4.1"
+ipython = "^8.24.0"
 
 [tool.poetry.group.lint.dependencies]
 flake8 = "^7.0.0"
