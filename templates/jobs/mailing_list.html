@@ -2,7 +2,9 @@
 {% block content %}
 
 <div class="col-12 mb-5">
+    {% if not perms.jobs.set_activity %}
     <a class="btn btn-outline-primary" href="{% url 'jobs:create' %}">Добавить рассылку</a>
+    {% endif %}
 </div>
 
 <div class="col-12">
@@ -14,12 +16,13 @@
                     <th scope="col">Email получателей</th>
                     <th scope="col">Сообщение рассылки</th>
                     <th scope="col">Статус рассылки</th>
+                    <th scope="col">Активность</th>
                 </tr>
             </thead>
             <tbody>
                 {% for object in object_list %}
                 <tr>
-                    <td>{{object.message.title|slice:50}}</td>
+                    <td>{{ object.title|slice:50 }}</td>
                     <td>
                         <ul>
                             {% for value in object.recipients.all.values_list %}
@@ -27,13 +30,24 @@
                             {% endfor%}
                         </ul>
                     </td>
-                    <td>{{object.message.content|slice:200}}</td>
-                    <td>{{object.status|slice:50}}</td>
-
+                    <td>{{ object.message.content|slice:200 }}</td>
+                    <td>{{ object.status|slice:50 }}</td>
+                    <td>{{ object.is_active }}</td>
                     <td><a href="{% url 'jobs:view' object.pk%}" class="btn btn-outline-primary">detail view</a></td>
+                    {% if not perms.jobs.set_activity %}
+
                     <td><a href="{% url 'jobs:edit' object.pk%}" class="btn btn-outline-warning">edit</a></td>
                     <td><a href="{% url 'jobs:delete' object.pk%}" class="btn btn-outline-danger">delete</a></td>
 
+                    {% endif %}
+                    {% if perms.jobs.set_activity %}
+                    {#{% if perms.jobs.view_mailing %}#}
+                    {% if object.is_active %}
+                        <td><a href="{% url 'jobs:activity_trigger' object.pk %}" class="btn btn-warning">Отключить</a></td>
+                    {% else %}
+                        <td><a href="{% url 'jobs:activity_trigger' object.pk %}" class="btn btn-success">Активировать</a></td>
+                    {% endif %}
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>

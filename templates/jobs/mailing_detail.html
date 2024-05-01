@@ -20,7 +20,8 @@
                 <p>Окончание рассылки: {{ object.stop_time }}</p>
                 <p>Следующая отправка: {{ object.next_sending }}</p>
                 <p>Периодичность: {{ object.frequency }}</p>
-
+                <p>Активна: {{ object.is_active }}</p>
+                <p>Владелец: {{ object.owner }}</p>
             </div>
             <div class="card-footer">
                 <p>Статус рассылки: {{ object.status }}</p>
