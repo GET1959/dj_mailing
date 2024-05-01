@@ -55,6 +55,7 @@ def my_job():
         .filter(next_sending__lte=current_datetime)
         .filter(stop_time__gt=current_datetime)
         .filter(status__in=["created", "active"])
+        .filter(is_active=True)
     )
     for mailing in mailings:
         try:
