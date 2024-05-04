@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
@@ -13,7 +14,7 @@ class ClientCreateView(CreateView):
     success_url = reverse_lazy("clients:list")
 
 
-class ClientListView(ListView):
+class ClientListView(LoginRequiredMixin, ListView):
     model = Client
     extra_context = {"title": "Клиенты"}
 
