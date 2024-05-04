@@ -1,11 +1,31 @@
+import random
+
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.contrib.auth.models import Permission
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
 
-from jobs.forms import MailingForm, MailingManagerForm
+from blog.models import Article
+from jobs.forms import MailingForm
 from jobs.models import Mailing, Attempt
+from jobs.services import get_cached_client
+
+
+class HomeView(TemplateView):
+    template_name = 'jobs/home.html'
+    extra_context = {
+        'title': 'Главная',
+    }
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['mail_count'] = Mailing.objects.all().count()
+        context_data['active_mail_count'] = Mailing.objects.filter(is_active=True).count()
+        context_data['client_count'] = get_cached_client().count()
+        context_data['article_list'] = random.sample(list(Article.objects.all()), 3)
+
+        return context_data
 
 
 class MailingCreateView(LoginRequiredMixin, CreateView):
@@ -45,17 +65,8 @@ class MailingUpdateView(PermissionRequiredMixin, UpdateView):
 
     def has_permission(self):
         product = self.get_object()
-        is_manager = self.request.user.groups.filter(name='manager').exists()
         is_owner = product.has_object_permissions(self.request.user)
         return is_owner
-
-    # def get_form_class(self):
-    #     product = self.get_object()
-    #     is_manager = self.request.user.groups.filter(name='manager').exists()
-    #     is_owner = product.has_object_permissions(self.request.user)
-    #     if is_manager and not is_owner:
-    #         return MailingManagerForm
-    #     return MailingForm
 
 
 class MailingDeleteView(PermissionRequiredMixin, DeleteView):

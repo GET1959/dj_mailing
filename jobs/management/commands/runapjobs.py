@@ -131,8 +131,8 @@ class Command(BaseCommand):
 
         scheduler.add_job(
             my_job,
-            trigger="interval",  # CronTrigger(),  # Every 10 seconds
-            id="my_job",  # The `id` assigned to each job MUST be unique
+            trigger="interval",
+            id="my_job",
             max_instances=1,
             replace_existing=True,
         )

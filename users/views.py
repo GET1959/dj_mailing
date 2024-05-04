@@ -1,5 +1,3 @@
-import random
-
 from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.mixins import PermissionRequiredMixin
