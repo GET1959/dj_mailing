@@ -2,7 +2,11 @@
 {% block content %}
 
   <div class="col-12 mb-5">
+    {% if not perms.jobs.set_activity %}
+    {% if not perms.blog.set_activity %}
     <a class="btn btn-outline-primary" href="{% url 'clients:create' %}">Добавить клиента</a>
+    {% endif %}
+    {% endif %}
   </div>
 
 
@@ -21,10 +25,14 @@
 
                 <a href="{% url 'clients:view' object.pk %}" type="button"
                 class="btn btn-sm btn-outline-secondary">View</a>
+                {% if not perms.jobs.set_activity %}
+                {% if not perms.blog.set_activity %}
                 <a href="{% url 'clients:edit' object.pk %}" type="button"
                 class="btn btn-sm btn-outline-secondary">Edit</a>
                 <a href="{% url 'clients:delete' object.pk %}" type="button"
                 class="btn btn-sm btn-outline-danger">Delete</a>
+                {% endif %}
+                {% endif %}
               </div>
             </div>
           </div>
