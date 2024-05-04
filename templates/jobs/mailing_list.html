@@ -35,13 +35,12 @@
                     <td>{{ object.is_active }}</td>
                     <td><a href="{% url 'jobs:view' object.pk%}" class="btn btn-outline-primary">detail view</a></td>
                     {% if not perms.jobs.set_activity %}
-
+                    {% if not perms.blog.set_activity %}
                     <td><a href="{% url 'jobs:edit' object.pk%}" class="btn btn-outline-warning">edit</a></td>
                     <td><a href="{% url 'jobs:delete' object.pk%}" class="btn btn-outline-danger">delete</a></td>
-
+                    {% endif %}
                     {% endif %}
                     {% if perms.jobs.set_activity %}
-                    {#{% if perms.jobs.view_mailing %}#}
                     {% if object.is_active %}
                         <td><a href="{% url 'jobs:activity_trigger' object.pk %}" class="btn btn-warning">Отключить</a></td>
                     {% else %}

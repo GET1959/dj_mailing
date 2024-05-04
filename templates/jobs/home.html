@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div>
+    <h2>Статистика сервиса</h2>
+    <p class="lead">Количество рассылок всего:  {{mail_count}}</p>
+    <p class="lead">Количество активных рассылок: {{active_mail_count}}</p>
+    <p class="lead">Количество уникальных клиентов для рассылок: {{client_count}}</p>
+</div>
+
+
+<div class="row">
+    {% for object in article_list %}
+    <div class="col-12">
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+              <h4>{{ object.title }}</h4>
+          </div>
+          <div class="card-body">
+
+            <p class="card-text">
+                {{ object.body | slice:200 }} . . .
+                <a href="{% url 'blog:view' object.pk %}" >Читать далее</a>
+            </p>
+          </div>
+        </div>
+
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
