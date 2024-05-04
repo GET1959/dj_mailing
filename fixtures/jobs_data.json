@@ -6,13 +6,15 @@
       "title": "рассылка_1",
       "message": 1,
       "start_time": "2024-03-31T03:00:00Z",
-      "stop_time": "2024-05-01T03:00:00Z",
-      "next_sending": "2024-04-08T18:20:41.372Z",
+      "stop_time": "2024-05-21T03:00:00Z",
+      "next_sending": "2024-05-11T15:57:01.485Z",
       "frequency": "неделя",
       "status": "active",
+      "is_active": true,
+      "owner": 8,
       "recipients": [
         1,
-        2
+        3
       ]
     }
   },
@@ -23,10 +25,12 @@
       "title": "рассылка_2",
       "message": 1,
       "start_time": "2024-03-31T03:00:00Z",
-      "stop_time": "2024-05-01T20:00:00Z",
-      "next_sending": "2024-05-01T18:20:40.787Z",
+      "stop_time": "2024-05-21T20:00:00Z",
+      "next_sending": "2024-03-21T18:20:40Z",
       "frequency": "месяц",
-      "status": "active",
+      "status": "completed",
+      "is_active": true,
+      "owner": 8,
       "recipients": [
         1,
         3
@@ -40,13 +44,14 @@
       "title": "рассылка_3",
       "message": 2,
       "start_time": "2024-03-31T03:00:00Z",
-      "stop_time": "2024-05-01T03:00:00Z",
-      "next_sending": "2024-04-04T15:45:08.901Z",
+      "stop_time": "2024-05-21T03:00:00Z",
+      "next_sending": "2024-05-05T15:35:59.553Z",
       "frequency": "день",
       "status": "active",
+      "is_active": true,
+      "owner": 10,
       "recipients": [
-        2,
-        3
+        2
       ]
     }
   },
@@ -57,13 +62,15 @@
       "title": "быстрая для теста",
       "message": 3,
       "start_time": "2024-03-31T21:00:00Z",
-      "stop_time": "2024-04-09T21:00:00Z",
-      "next_sending": "2024-04-03T15:48:13.509Z",
-      "frequency": "секунда",
+      "stop_time": "2024-05-20T21:00:00Z",
+      "next_sending": "2024-05-04T16:22:57.812Z",
+      "frequency": "10 секунд",
       "status": "active",
+      "is_active": true,
+      "owner": 11,
       "recipients": [
-        1,
-        2
+        6,
+        7
       ]
     }
   },
@@ -74,13 +81,15 @@
       "title": "не очень быстрая",
       "message": 4,
       "start_time": "2024-03-31T21:00:00Z",
-      "stop_time": "2024-04-09T21:00:00Z",
-      "next_sending": "2024-04-03T15:48:40.729Z",
+      "stop_time": "2024-05-20T21:00:00Z",
+      "next_sending": "2024-05-04T16:23:00.787Z",
       "frequency": "минута",
       "status": "active",
+      "is_active": true,
+      "owner": 9,
       "recipients": [
-        1,
-        3
+        4,
+        5
       ]
     }
   }

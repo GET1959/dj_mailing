@@ -5,7 +5,8 @@
     "fields": {
       "name": "иванов иван иванович",
       "email": "example_1@mailing.co",
-      "comment": "получатель рассылки"
+      "comment": "получатель рассылки",
+      "owner": 8
     }
   },
   {
@@ -13,8 +14,9 @@
     "pk": 2,
     "fields": {
       "name": "петров петр петрович",
-      "email": "Example_3@mailing.Co",
-      "comment": "получатель всех рассылок"
+      "email": "example_3@mailing.Co",
+      "comment": "получатель всех рассылок",
+      "owner": 10
     }
   },
   {
@@ -22,8 +24,49 @@
     "pk": 3,
     "fields": {
       "name": "семенов петр иванович",
-      "email": "Example_2@mailing.Co",
-      "comment": "Получатель одной из рассылок"
+      "email": "example_2@mailing.co",
+      "comment": "Получатель одной из рассылок",
+      "owner": 8
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 4,
+    "fields": {
+      "name": "Atest",
+      "email": "atest@atest.com",
+      "comment": "Получатель рассылок Atesta",
+      "owner": 9
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 5,
+    "fields": {
+      "name": "Btest",
+      "email": "btest@btest.pro",
+      "comment": "Получатель рассылок btesta",
+      "owner": 9
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 6,
+    "fields": {
+      "name": "Ctest",
+      "email": "ctest@ctest.pro",
+      "comment": "Получатель рассылок Ctesta",
+      "owner": 11
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 7,
+    "fields": {
+      "name": "Dtest",
+      "email": "dtest@dtest.pro",
+      "comment": "Получатель рассылок Dtesta",
+      "owner": 11
     }
   }
 ]
