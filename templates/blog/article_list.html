@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <div class="col-12 mb-5">
+    {% if not perms.blog.set_activity %}
+    <a class="btn btn-outline-primary" href="{% url 'blog:create' %}">Добавить статью</a>
+    {% endif %}
+  </div>
+
+
+  {% for object in object_list %}
+
+      <div class="col-12">
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+              <h4>{{ object.title }}</h4>
+          </div>
+          <div class="card-body">
+
+            <p class="card-text">
+                {{ object.body | slice:200 }} . . .
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+
+                <a href="{% url 'blog:view' object.pk %}" class="btn btn-secondary">Читать статью</a>
+                {#<a href="{% url 'blog:delete' object.pk %}" type="button"#}
+                    {#class="btn btn-sm btn-outline-danger">Delete</a>#}
+                {% if perms.blog.set_activity %}
+                    {% if object.is_active %}
+                        <a href="{% url 'blog:activity_trigger' object.pk %}" class="btn btn-warning">Снять с публикации</a>
+                    {% else %}
+                        <a href="{% url 'blog:activity_trigger' object.pk %}" class="btn btn-success">Опубликовать</a>
+                    {% endif %}
+                    {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  {% endfor %}
+
+{% endblock %}
