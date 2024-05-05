@@ -19,11 +19,12 @@
 
             <p class="card-text">
                 {{ object.body | slice:200 }} . . .
+                <a href="{% url 'blog:view' object.pk %}">Читать далее</a>
             </p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
 
-                <a href="{% url 'blog:view' object.pk %}" class="btn btn-secondary">Читать статью</a>
+
                 {#<a href="{% url 'blog:delete' object.pk %}" type="button"#}
                     {#class="btn btn-sm btn-outline-danger">Delete</a>#}
                 {% if perms.blog.set_activity %}
