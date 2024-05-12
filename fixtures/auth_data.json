@@ -536,9 +536,9 @@
     "fields": {
       "name": "manager",
       "permissions": [
-        56,
+        37,
         36,
-        55,
+        50,
         48
       ]
     }
@@ -549,7 +549,7 @@
     "fields": {
       "name": "content_manager",
       "permissions": [
-        61
+        55
       ]
     }
   }

@@ -1,1 +1,168 @@
-[{"model": "users.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$720000$cwfvIsc6CijBCCWvxYeEOW$mTskH/ylguTq9ITSmbbq1vxNsIXwOfLVPIWbpsgy1HY=", "last_login": "2024-05-02T16:49:35.675Z", "is_superuser": true, "first_name": "admin", "last_name": "SkyPro", "is_staff": true, "date_joined": "2024-04-22T15:38:31.298Z", "email": "admin@sky.pro", "phone": null, "avatar": "", "is_active": true, "groups": [], "user_permissions": []}}, {"model": "users.user", "pk": 7, "fields": {"password": "pbkdf2_sha256$720000$IxWiFd5Qrtb8WZxDA3e7eX$AvK3iDcBdFLHRmEQ990SSrnquX6pulr13vUnMjc7G28=", "last_login": "2024-05-03T16:26:49.425Z", "is_superuser": false, "first_name": "", "last_name": "", "is_staff": true, "date_joined": "2024-04-22T17:48:24Z", "email": "topchief@yandex.ru", "phone": null, "avatar": "", "is_active": true, "groups": [1], "user_permissions": []}}, {"model": "users.user", "pk": 8, "fields": {"password": "pbkdf2_sha256$720000$YMV3qrrCzeWj65mnUMwtdm$usvHN+zIX0u+RWwwdwKod8YxDrCFBbVjtVciVtUxSg4=", "last_login": "2024-05-01T17:11:33.136Z", "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "date_joined": "2024-04-24T15:30:08.232Z", "email": "topchiev@list.ru", "phone": null, "avatar": "", "is_active": true, "groups": [], "user_permissions": [34, 35, 36]}}, {"model": "users.user", "pk": 9, "fields": {"password": "pbkdf2_sha256$720000$rrFuRzuZYGpmpO7xhhh75y$kXa7e1VG+/RjlDMhSV3PYVFcN6vE81z7b7ZCxx7p6fU=", "last_login": "2024-04-28T17:22:19.980Z", "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "date_joined": "2024-04-28T15:24:06.380Z", "email": "genpyth@yandex.ru", "phone": null, "avatar": "", "is_active": true, "groups": [], "user_permissions": []}}, {"model": "users.user", "pk": 10, "fields": {"password": "pbkdf2_sha256$720000$QQCf2H20QUokb9c8Rpw2cb$5/qrLbyfprMNBAWWM/E9u/J7lPHlytcN1onR/TQ4hXQ=", "last_login": "2024-04-28T17:24:54.262Z", "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "date_joined": "2024-04-28T17:24:08.417Z", "email": "topchiev@mail.ru", "phone": null, "avatar": "", "is_active": true, "groups": [], "user_permissions": []}}, {"model": "users.user", "pk": 11, "fields": {"password": "pbkdf2_sha256$720000$WKk2LHv7aPaAwerYwKsQie$MKS09D7HgasWe0YYB5f0u3/FcaDGnmDqJ3CKI97dK9s=", "last_login": "2024-05-01T17:31:19.265Z", "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "date_joined": "2024-04-28T17:28:40.204Z", "email": "gennadytopchiev1959@gmail.com", "phone": null, "avatar": "", "is_active": true, "groups": [], "user_permissions": [34, 35, 36]}}, {"model": "users.user", "pk": 12, "fields": {"password": "pbkdf2_sha256$720000$C8ofCNnP4E9ms58UkVf3Q0$dTAJczR6HHdwYGmRtqX5pmOxd8nejELfKxaahGiE+uM=", "last_login": "2024-05-01T17:14:26.224Z", "is_superuser": false, "first_name": "Gennady", "last_name": "TOPCHIEV", "is_staff": true, "date_joined": "2024-04-29T07:38:13Z", "email": "gennadytopchiev@gmail.com", "phone": "+79991236545", "avatar": "", "is_active": true, "groups": [1], "user_permissions": []}}, {"model": "users.user", "pk": 13, "fields": {"password": "pbkdf2_sha256$720000$HYTr7WqKb313pwuFPM84GB$t/kJPurZqfyef8cCOB7lzKVTL+y2/HlNTE+nqkvncmw=", "last_login": "2024-05-03T17:55:03.427Z", "is_superuser": false, "first_name": "gena", "last_name": "top", "is_staff": true, "date_joined": "2024-05-03T16:10:23Z", "email": "get.7917@gmail.com", "phone": null, "avatar": "", "is_active": true, "groups": [2], "user_permissions": []}}]
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$cwfvIsc6CijBCCWvxYeEOW$mTskH/ylguTq9ITSmbbq1vxNsIXwOfLVPIWbpsgy1HY=",
+      "last_login": "2024-05-02T16:49:35.675Z",
+      "is_superuser": true,
+      "first_name": "admin",
+      "last_name": "SkyPro",
+      "is_staff": true,
+      "date_joined": "2024-04-22T15:38:31.298Z",
+      "email": "admin@sky.pro",
+      "phone": null,
+      "avatar": "",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$IxWiFd5Qrtb8WZxDA3e7eX$AvK3iDcBdFLHRmEQ990SSrnquX6pulr13vUnMjc7G28=",
+      "last_login": "2024-05-03T16:26:49.425Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "date_joined": "2024-04-22T17:48:24Z",
+      "email": "topchief@yandex.ru",
+      "phone": null,
+      "avatar": "",
+      "is_active": true,
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$YMV3qrrCzeWj65mnUMwtdm$usvHN+zIX0u+RWwwdwKod8YxDrCFBbVjtVciVtUxSg4=",
+      "last_login": "2024-05-01T17:11:33.136Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "date_joined": "2024-04-24T15:30:08.232Z",
+      "email": "topchiev@list.ru",
+      "phone": null,
+      "avatar": "",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": [
+        34,
+        35,
+        36
+      ]
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$rrFuRzuZYGpmpO7xhhh75y$kXa7e1VG+/RjlDMhSV3PYVFcN6vE81z7b7ZCxx7p6fU=",
+      "last_login": "2024-04-28T17:22:19.980Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "date_joined": "2024-04-28T15:24:06.380Z",
+      "email": "genpyth@yandex.ru",
+      "phone": null,
+      "avatar": "",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$QQCf2H20QUokb9c8Rpw2cb$5/qrLbyfprMNBAWWM/E9u/J7lPHlytcN1onR/TQ4hXQ=",
+      "last_login": "2024-04-28T17:24:54.262Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "date_joined": "2024-04-28T17:24:08.417Z",
+      "email": "topchiev@mail.ru",
+      "phone": null,
+      "avatar": "",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$WKk2LHv7aPaAwerYwKsQie$MKS09D7HgasWe0YYB5f0u3/FcaDGnmDqJ3CKI97dK9s=",
+      "last_login": "2024-05-01T17:31:19.265Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "date_joined": "2024-04-28T17:28:40.204Z",
+      "email": "gennadytopchiev1959@gmail.com",
+      "phone": null,
+      "avatar": "",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": [
+        34,
+        35,
+        36
+      ]
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 12,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$C8ofCNnP4E9ms58UkVf3Q0$dTAJczR6HHdwYGmRtqX5pmOxd8nejELfKxaahGiE+uM=",
+      "last_login": "2024-05-01T17:14:26.224Z",
+      "is_superuser": false,
+      "first_name": "Gennady",
+      "last_name": "TOPCHIEV",
+      "is_staff": true,
+      "date_joined": "2024-04-29T07:38:13Z",
+      "email": "gennadytopchiev@gmail.com",
+      "phone": "+79991236545",
+      "avatar": "",
+      "is_active": true,
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 13,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$HYTr7WqKb313pwuFPM84GB$t/kJPurZqfyef8cCOB7lzKVTL+y2/HlNTE+nqkvncmw=",
+      "last_login": "2024-05-03T17:55:03.427Z",
+      "is_superuser": false,
+      "first_name": "gena",
+      "last_name": "top",
+      "is_staff": true,
+      "date_joined": "2024-05-03T16:10:23Z",
+      "email": "get.7917@gmail.com",
+      "phone": null,
+      "avatar": "",
+      "is_active": true,
+      "groups": [
+        2
+      ],
+      "user_permissions": []
+    }
+  }
+]
