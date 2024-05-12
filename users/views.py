@@ -27,7 +27,8 @@ from users.models import User
 from users.services import generate_password
 
 
-CURRENT_SITE = Site.objects.get_current().domain  # Установил в админке DOMAIN NAME 127.0.0.1:8000
+# CURRENT_SITE = Site.objects.get_current().domain  # Установил в админке DOMAIN NAME 127.0.0.1:8000
+CURRENT_SITE = "127.0.0.1:8000"
 
 
 class RegisterView(CreateView):
