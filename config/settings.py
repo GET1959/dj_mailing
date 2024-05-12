@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "django.contrib.sites",
+    'django.contrib.sites',
 
     'django_apscheduler',
     'jobs',
@@ -86,7 +86,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sched_p',
+        # 'NAME': 'sched_p',
+        'NAME': 'sched_p_1',
         'USER': 'postgres',
         'HOST': '127.0.0.1',
         'PORT': 5432,
