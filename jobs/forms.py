@@ -22,8 +22,6 @@ class MailingForm(StyleFormMixin, forms.ModelForm):
             "stop_time",
             "next_sending",
             "frequency",
-            "status",
-            "owner"
         )
 
 

@@ -11,5 +11,4 @@ class MessageForm(StyleFormMixin, forms.ModelForm):
         fields = (
             "title",
             "content",
-            "owner",
         )
