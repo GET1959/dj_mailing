@@ -13,6 +13,12 @@ class ClientCreateView(CreateView):
     extra_context = {"title": "Создание клиента"}
     success_url = reverse_lazy("clients:list")
 
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.owner = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
 
 class ClientListView(LoginRequiredMixin, ListView):
     model = Client

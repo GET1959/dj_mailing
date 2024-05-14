@@ -13,6 +13,12 @@ class MessageCreateView(CreateView):
     extra_context = {"title": "Новое сообщение"}
     success_url = reverse_lazy("mess:list")
 
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.owner = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
 
 class MessageListView(LoginRequiredMixin, ListView):
     model = Message

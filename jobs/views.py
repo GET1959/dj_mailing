@@ -23,8 +23,10 @@ class HomeView(TemplateView):
         context_data['mail_count'] = Mailing.objects.all().count()
         context_data['active_mail_count'] = Mailing.objects.filter(is_active=True).count()
         context_data['client_count'] = get_cached_client().count()
-        context_data['article_list'] = random.sample(list(Article.objects.all()), 3)
-
+        if len(list(Article.objects.all())) > 3:
+            context_data['article_list'] = random.sample(list(Article.objects.all()), 3)
+        else:
+            context_data['article_list'] = list(Article.objects.all())
         return context_data
 
 
@@ -33,6 +35,12 @@ class MailingCreateView(LoginRequiredMixin, CreateView):
     form_class = MailingForm
     extra_context = {"title": "Создание рассылки"}
     success_url = reverse_lazy("jobs:list")
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.owner = self.request.user
+        self.object.save()
+        return super().form_valid(form)
 
 
 class MailingListView(LoginRequiredMixin, ListView):
