@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
+{% load my_tags %}
 {% block content %}
   <div class="col-12">
     <div class="row">
       <div class="col-6">
-        <img class="card-img-top" src="/media/{{ object.image }}" alt="card image cap">
+        {#<img class="card-img-top" src="/media/{{ object.image }}" alt="card image cap">#}
+        <img class="card-img-top" src="{{ object.image | mymedia }}" alt="card image cap">
       </div>
       <div class="col-6">
         <div class="card">
