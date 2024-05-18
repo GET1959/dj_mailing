@@ -1,13 +1,11 @@
 import random
 
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
-from django.contrib.auth.models import Permission
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
 
 from blog.models import Article
-from clients.models import Client
 from jobs.forms import MailingForm
 from jobs.models import Mailing, Attempt
 from jobs.services import get_cached_client
@@ -39,7 +37,6 @@ class MailingCreateView(LoginRequiredMixin, CreateView):
 
     # Для отображения в поле 'recipients' только собственных клиентов:
     def get_form_kwargs(self):
-        
         kwargs = super().get_form_kwargs()
         kwargs.update({'request': self.request})
         return kwargs
