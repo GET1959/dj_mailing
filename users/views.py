@@ -37,6 +37,15 @@ class RegisterView(CreateView):
     template_name = "users/register.html"
     success_url = reverse_lazy("users:login")
 
+    # def get_queryset(self, **kwargs):
+    #     if self.request.user.is_superuser or self.request.user.is_staff:
+    #         return Mailing.objects.all()
+    #     view_perm = Permission.objects.get(codename='view_mailing')
+    #     change_perm = Permission.objects.get(codename='change_mailing')
+    #     delete_perm = Permission.objects.get(codename='delete_mailing')
+    #     self.request.user.user_permissions.set([view_perm, change_perm, delete_perm])
+    #     return Mailing.objects.filter(owner=self.request.user)
+
     def form_valid(self, form):
         user = form.save(commit=False)
         user.is_active = False

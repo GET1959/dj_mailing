@@ -1,6 +1,8 @@
 from django import forms
 
+from clients.models import Client
 from jobs.models import Mailing
+from mess.models import Message
 
 
 class StyleFormMixin:
@@ -11,6 +13,16 @@ class StyleFormMixin:
 
 
 class MailingForm(StyleFormMixin, forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        # Получаем текущего пользователя из kwargs
+        self.request = kwargs.pop('request', None)
+        super().__init__(*args, **kwargs)
+
+        # Фильтруем поле clients только для тех клиентов, которые принадлежат текущему пользователю
+        if self.request and self.request.user:
+            self.fields['recipients'].queryset = Client.objects.filter(owner=self.request.user)
+            self.fields['message'].queryset = Message.objects.filter(owner=self.request.user)
 
     class Meta:
         model = Mailing

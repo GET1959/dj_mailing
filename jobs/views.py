@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
 
 from blog.models import Article
+from clients.models import Client
 from jobs.forms import MailingForm
 from jobs.models import Mailing, Attempt
 from jobs.services import get_cached_client
@@ -36,9 +37,17 @@ class MailingCreateView(LoginRequiredMixin, CreateView):
     extra_context = {"title": "Создание рассылки"}
     success_url = reverse_lazy("jobs:list")
 
+    # Для отображения в поле 'recipients' только собственных клиентов:
+    def get_form_kwargs(self):
+        
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'request': self.request})
+        return kwargs
+
     def form_valid(self, form):
         self.object = form.save()
         self.object.owner = self.request.user
+        self.object.recipients.owner = self.request.user  # 16.05.2024
         self.object.save()
         return super().form_valid(form)
 
@@ -52,10 +61,6 @@ class MailingListView(LoginRequiredMixin, ListView):
     def get_queryset(self, **kwargs):
         if self.request.user.is_superuser or self.request.user.is_staff:
             return Mailing.objects.all()
-        view_perm = Permission.objects.get(codename='view_mailing')
-        change_perm = Permission.objects.get(codename='change_mailing')
-        delete_perm = Permission.objects.get(codename='delete_mailing')
-        self.request.user.user_permissions.set([view_perm, change_perm, delete_perm])
         return Mailing.objects.filter(owner=self.request.user)
 
 
@@ -72,8 +77,8 @@ class MailingUpdateView(PermissionRequiredMixin, UpdateView):
     success_url = reverse_lazy("jobs:list")
 
     def has_permission(self):
-        product = self.get_object()
-        is_owner = product.has_object_permissions(self.request.user)
+        mailing = self.get_object()
+        is_owner = mailing.has_object_permissions(self.request.user)
         return is_owner
 
 
