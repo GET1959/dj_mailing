@@ -68,5 +68,15 @@
       "comment": "Получатель рассылок Dtesta",
       "owner": 11
     }
+  },
+  {
+    "model": "clients.client",
+    "pk": 9,
+    "fields": {
+      "name": "Etest",
+      "email": "etestov@sky.pro",
+      "comment": "Получатель рассылки topchiev@list.ru",
+      "owner": 8
+    }
   }
 ]
